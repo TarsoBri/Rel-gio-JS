@@ -7,17 +7,42 @@
         
         <style>
             body{
-                background-color: #e4e4e4;
+                margin: 0;
+                padding: 0;
+                background-color: #4b4c77;
+                color: #ccc;
+                font-size: 12px;
                 font-family: Arial, Helvetica, sans-serif;
             }
 
             .relogio{
-                
-                font-size: 42px;
-                padding: 50px;
-                color: white;
-                background-color: rgb(0, 0, 146);
+                font-size: 82px;
+                color: #4b4c77;
+                font-weight: bolder;
+                display: flex;
+                justify-content: center;
+                margin: 100px 0; 
             }
+            
+            .horas, .minutos, .segundos{
+                display: flex;
+                background-color: rgb(0, 221, 210);
+                padding: 20px;
+                border-radius: 20%;
+                box-shadow: 12px 10px 7px rgb(30, 30, 30);  
+            }
+            .minutos, .segundos{
+                margin-left: 5vw;
+            }
+
+            @media (max-width: 600px){
+                .relogio{
+                    flex-direction: column;
+                    
+                }
+            
+        }
+
         </style>
     </head>
     <body>
@@ -34,7 +59,8 @@
         
             var $horas = document.querySelector('.horas');
             var $minutos = document.querySelector('.minutos');
-            var $relogio = document.querySelector('.segundos');
+            var $segundos = document.querySelector('.segundos');
+
             alterarHora()
             function alterarHora(){
                 var horaAtual = new Date();
@@ -44,6 +70,9 @@
                 var ss = horaAtual.getSeconds();
                 ss = ss < 10 ? '0' + ss : ss;
 
+                $horas.textContent = hh;
+                $minutos.textContent = mm;
+                $segundos.textContent = ss;
                 
             } setInterval(alterarHora, 1000);
         
