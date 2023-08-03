@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Javascript Completo</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <style>
+            body{
+                background-color: #e4e4e4;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            .relogio{
+                
+                font-size: 42px;
+                padding: 50px;
+                color: white;
+                background-color: rgb(0, 0, 146);
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Mostrar um relógio. Criar uma função que retorne uma hora atual no formato hh:mm:ss. Mostre esse texto numa div qualquer na tela. Agora execute essa função a cada 1 segundo.
+        </h1>
+        
+        <div class="relogio">
+            <div class="horas"></div>
+            <div class="minutos"></div>
+            <div class="segundos"></div>
+        </div>
+        
+        <script>
+        
+            var $horas = document.querySelector('.horas');
+            var $minutos = document.querySelector('.minutos');
+            var $relogio = document.querySelector('.segundos');
+            alterarHora()
+            function alterarHora(){
+                var horaAtual = new Date();
+                var hh = horaAtual.getHours();
+                var mm = horaAtual.getMinutes();
+                mm = mm < 10 ? '0' + mm : mm;
+                var ss = horaAtual.getSeconds();
+                ss = ss < 10 ? '0' + ss : ss;
+
+                
+            } setInterval(alterarHora, 1000);
+        
+        </script>
+        
+    </body>
+</html>
