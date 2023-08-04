@@ -15,7 +15,7 @@
                 font-family: Arial, Helvetica, sans-serif;
             }
 
-            .relogio{
+            .clock{
                 font-size: 82px;
                 color: #4b4c77;
                 font-weight: bolder;
@@ -24,7 +24,7 @@
                 margin: 100px 0; 
             }
             
-            .horas, .minutos, .segundos{
+            .hours, .minutes, .seconds{
                 display: flex;
                 background-color: rgb(0, 221, 210);
                 padding: 20px;
@@ -32,17 +32,17 @@
                 border-radius: 20%;
                 box-shadow: 12px 10px 7px rgb(30, 30, 30);  
             }
-            .minutos, .segundos{
+            .minutes, .seconds{
                 margin-left: 5vw;
             }
 
             @media (max-width: 600px){
-                .relogio{
+                .clock{
                     flex-direction: column;
                     width: 140px;
                     margin: 20px auto;
                 }
-                .minutos, .segundos{
+                .minutes, .seconds{
                     margin-left: 0;
                     margin-top: 20px ;
                 }
@@ -55,33 +55,36 @@
         <h1>Criar uma função que retorne uma hora atual no formato hh:mm:ss. Mostre esse texto numa div qualquer na tela. Agora execute essa função a cada 1 segundo.
         </h1>
         
-        <div class="relogio">
-            <div class="horas"></div>
-            <div class="minutos"></div>
-            <div class="segundos"></div>
+        <div class="clock">
+            <div class="hours"></div>
+            <div class="minutes"></div>
+            <div class="seconds"></div>
         </div>
         
         <script>
-        
-            var $horas = document.querySelector('.horas');
-            var $minutos = document.querySelector('.minutos');
-            var $segundos = document.querySelector('.segundos');
+       
+            var $hours = document.querySelector('.hours');
+            var $minutes = document.querySelector('.minutes');
+            var $seconds = document.querySelector('.seconds');
 
-            alterarHora()
-            function alterarHora(){
-                var horaAtual = new Date();
-                var hh = horaAtual.getHours();
-                var mm = horaAtual.getMinutes();
-                mm = mm < 10 ? '0' + mm : mm;
-                var ss = horaAtual.getSeconds();
-                ss = ss < 10 ? '0' + ss : ss;
+            getTime()
+            function getTime(){
+                var currentTime = new Date();
 
-                $horas.textContent = hh;
-                $minutos.textContent = mm;
-                $segundos.textContent = ss;
+                var hh = format(currentTime.getHours());
+                var mm = format(currentTime.getMinutes());
+                var ss = format(currentTime.getSeconds());
                 
-            } setInterval(alterarHora, 1000);
-        
+                $hours.textContent = hh;
+                $minutes.textContent = mm;
+                $seconds.textContent = ss;
+            } 
+            setInterval(getTime, 1000);
+
+            function format(t){
+                return t = t < 10 ? '0' + t : t;
+            }
+
         </script>
         
     </body>
